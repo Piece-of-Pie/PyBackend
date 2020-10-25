@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pieceofpie.py.repository.StudentMapper">
+    <sql id="table_name">
+        student
+    </sql>
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" parameterType="com.pieceofpie.py.model.StudentPo">
+        insert into
+        <include refid="table_name"/>
+        (name, year, student_no, password) VALUES (#{name}, #{year}, #{studentNo}, #{password})
+    </insert>
+
+    <select id="getByStudentNo" resultType="com.pieceofpie.py.model.StudentPo">
+        SELECT * FROM
+        <include refid="table_name"/>
+        WHERE year=#{year} AND student_no=#{studentNo}
+    </select>
+
+    <select id="getLastNumOfTheYear" resultType="java.lang.Long">
+        SELECT student_no from <include refid="table_name"/> WHERE year = #{year} ORDER BY student_no desc LIMIT 1
+    </select>
+</mapper>
