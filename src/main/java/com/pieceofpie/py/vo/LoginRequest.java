@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 @Setter
 public class LoginRequest {
   @Min(value = 0, message = "账号不能为空")
-  @Digits(integer = 8, fraction = 0)
+  @Digits(integer = 12, fraction = 0)
   private long no;
   @NotBlank(message = "密码不能为空")
   @Size(min = 8, message = "密码不能小于 8 位")
