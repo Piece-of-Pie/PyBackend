@@ -60,7 +60,7 @@ public class StudentServiceImpl implements StudentService {
 
   @Override
   public AccountVo login(long studentNo, String password) {
-    StudentPo student = studentMapper.getByStudentNo(studentNo / Constants.ACCOUNT_NO_DELIMITER, studentNo % (Constants.ACCOUNT_NO_DELIMITER * 10));
+    StudentPo student = studentMapper.getByStudentNo(studentNo / Constants.ACCOUNT_NO_DELIMITER, studentNo % Constants.ACCOUNT_NO_DELIMITER);
     if (student != null && student.getPassword().equals(password))
       return buildAccountVo(student);
     else throw new LoginNotPassException("学号或密码不正确！");
